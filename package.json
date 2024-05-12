@@ -1,5 +1,5 @@
 {
-  "name": "red-contrib-ensure-state",
+  "name": "node-red-contrib-ensure-state",
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
