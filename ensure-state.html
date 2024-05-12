@@ -1,0 +1,70 @@
+<script type="text/javascript">
+  RED.nodes.registerType('check-retry', {
+    category: 'function',
+    color: '#a6bbcf',
+    defaults: {
+      name: { value: '' },
+      entity_id: { value: '', required: true, type: 'ha-entity' },
+      expected_state: { value: 'on', required: true },
+      retry_count: {
+        value: 5,
+        required: true,
+        validate: RED.validators.number(),
+      },
+      delay_time: {
+        value: 1000,
+        required: true,
+        validate: RED.validators.number(),
+      },
+    },
+    inputs: 1,
+    outputs: 2,
+    icon: 'file.png',
+    paletteLabel: 'check retry',
+    label: function () {
+      return this.name || 'check retry';
+    },
+    oneditprepare: function () {
+      $('#node-input-entity_id').haEntityPicker();
+    },
+  });
+</script>
+
+<div class="form-row">
+  <label for="node-input-entity_id"><i class="icon-tag"></i> Entity ID</label>
+  <input
+    type="text"
+    id="node-input-entity_id"
+    style="width: 70%"
+    class="ha-entity-picker"
+  />
+</div>
+<div class="form-row">
+  <label for="node-input-expected_state"
+    ><i class="icon-tag"></i> Expected State</label
+  >
+  <select id="node-input-expected_state">
+    <option value="on">On</option>
+    <option value="off">Off</option>
+  </select>
+  <div class="form-row">
+    <label for="node-input-retry_count"
+      ><i class="icon-repeat"></i> Retry Count</label
+    >
+    <input
+      type="number"
+      id="node-input-retry_count"
+      placeholder="Retry Count"
+    />
+  </div>
+  <div class="form-row">
+    <label for="node-input-delay_time"
+      ><i class="icon-clock"></i> Delay Time (ms)</label
+    >
+    <input
+      type="number"
+      id="node-input-delay_time"
+      placeholder="Delay Time in ms"
+    />
+  </div>
+</div>
